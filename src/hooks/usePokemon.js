@@ -8,7 +8,7 @@ export function usePokemon() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetchPokemon();
+        const response = await fetchPokemon(name);
         setPokemon(response);
       } catch (e) {
         setError(e.message);
