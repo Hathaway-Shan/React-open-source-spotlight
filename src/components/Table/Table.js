@@ -1,11 +1,12 @@
 import React from 'react';
 import 'bulma/css/bulma.min.css';
 import { Table as bulmaTable } from 'react-bulma-components';
-import { usePokemon } from '../../hooks/usePokemon';
 import BootstrapTable from 'react-bootstrap-table-next';
+import { usePokemon } from '../../hooks/usePokemon';
+import Pokeball from '../Pokeball/Pokeball';
 
 export default function Table() {
-  const { pokemon } = usePokemon();
+  const { pokemon, loading } = usePokemon();
   let products = pokemon;
 
   const columns = [
@@ -24,12 +25,15 @@ export default function Table() {
   ];
 
   return (
-    <section className="mt-4">
-      <div className="columns is-centered">
-        <bulmaTable className="table is-bordered is-hoverable">
-          <BootstrapTable keyField="pokemon" data={products} columns={columns} />
-        </bulmaTable>
-      </div>
-    </section>
+    <div>
+      <span>{loading ? <Pokeball /> : <></>}</span>
+      <section className="mt-4">
+        <div className="columns is-centered">
+          <bulmaTable className="table is-bordered is-hoverable">
+            <BootstrapTable keyField="pokemon" data={products} columns={columns} />
+          </bulmaTable>
+        </div>
+      </section>
+    </div>
   );
 }
