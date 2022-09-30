@@ -1,11 +1,11 @@
 import React from 'react';
 import 'bulma/css/bulma.min.css';
-import { Table as bulmaTable, Button } from 'react-bulma-components';
+import { Table as bulmaTable } from 'react-bulma-components';
 import { usePokemon } from '../../hooks/usePokemon';
 import BootstrapTable from 'react-bootstrap-table-next';
 
 export default function Table() {
-  const { pokemon, error } = usePokemon();
+  const { pokemon } = usePokemon();
   let products = pokemon;
 
   const columns = [
@@ -26,7 +26,7 @@ export default function Table() {
   return (
     <section className="mt-4">
       <div className="columns is-centered">
-        <bulmaTable className="table is-bordered">
+        <bulmaTable className="table is-bordered is-hoverable">
           <BootstrapTable keyField="pokemon" data={products} columns={columns} />
         </bulmaTable>
       </div>
